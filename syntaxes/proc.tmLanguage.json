@@ -1,0 +1,95 @@
+{
+	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+	"name": "proc",
+	"patterns": [
+		{
+			"include": "#keywords"
+		},
+		{
+			"include": "#types"
+		},
+		{
+			"include": "#comments"
+		},
+		{
+			"include": "#strings"
+		},
+		{
+			"include": "#execsql"
+		},
+		{
+			"include": "#support"
+		}
+	],
+	"repository": {
+		"keywords": {
+			"patterns": [
+				{
+					"name": "keyword.control.proc",
+					"match": "\\b(if|else|for|while|return|switch|case|break|continue)\\b"
+				}
+			]
+		},
+		"types": {
+			"patterns": [
+				{
+					"match": "\\b(int|char|float|double|void|long|short|unsigned|signed|struct|enum)\\b",
+					"name": "storage.type.proc"
+				}
+			]
+		},
+		"comments": {
+			"patterns": [
+				{
+					"begin": "/\\*",
+					"end": "\\*/",
+					"name": "comment.block.proc"
+				},
+				{
+					"match": "//.*$",
+					"name": "comment.line.double-slash.proc"
+				}
+			]
+		},
+		"strings": {
+			"name": "string.quoted.double.proc",
+			"begin": "\"",
+			"end": "\"",
+			"patterns": [
+				{
+					"name": "constant.character.escape.proc",
+					"match": "\\\\."
+				}
+			]
+		},
+		"execsql": {
+			"name": "source.execsql.proc",
+			"begin": "EXEC\\sSQL\\s",
+			"beginCaptures": {
+				"0": {
+					"name": "keyword.execsql.proc"
+				}
+			},
+			"end": ";",
+			"patterns": [
+				{
+					"name": "variable.execsql.proc",
+					"match": "(?<=:)\\w+"
+				},
+				{
+					"name": "variable.execsql.sqlca.proc",
+					"match": "sqlca"
+				}
+			]
+		},
+		"support": {
+			"patterns": [
+				{
+					"name": "support.include.proc",
+					"match": "#.*$"
+				}
+			]
+		}
+	},
+	"scopeName": "source.proc"
+}

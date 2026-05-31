@@ -1,0 +1,98 @@
+{
+	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+	"name": "ecpg",
+	"patterns": [
+		{
+			"include": "#keywords"
+		},
+		{
+			"include": "#types"
+		},
+		{
+			"include": "#comments"
+		},
+		{
+			"include": "#strings"
+		},
+		{
+			"include": "#execsql"
+		},
+		{
+			"include": "#support"
+		}
+	],
+	"repository": {
+		"keywords": {
+			"patterns": [
+				{
+					"name": "keyword.control.ecpg",
+					"match": "\\b(if|else|for|while|return|switch|case|break|continue)\\b"
+				}
+			]
+		},
+		"types": {
+			"patterns": [
+				{
+					"match": "\\b(int|char|float|double|void|long|short|unsigned|signed|struct|enum)\\b",
+					"name": "storage.type.ecpg"
+				}
+			]
+		},
+		"comments": {
+			"patterns": [
+				{
+					"begin": "/\\*",
+					"end": "\\*/",
+					"name": "comment.block.ecpg"
+				},
+				{
+					"match": "//.*$",
+					"name": "comment.line.double-slash.ecpg"
+				}
+			]
+		},
+		"strings": {
+			"name": "string.quoted.double.ecpg",
+			"begin": "\"",
+			"end": "\"",
+			"patterns": [
+				{
+					"name": "constant.character.escape.ecpg",
+					"match": "\\\\."
+				}
+			]
+		},
+		"execsql": {
+			"name": "source.execsql.ecpg",
+			"begin": "EXEC\\sSQL\\s",
+			"beginCaptures": {
+				"0": {
+					"name": "keyword.execsql.ecpg"
+				}
+			},
+			"end": ";",
+			"patterns": [
+				{
+					"name": "variable.execsql.ecpg",
+					"match": "(?<=:)\\w+"
+				},
+				{
+					"name": "variable.execsql.sqlca.ecpg",
+					"match": "sqlca"
+				},
+				{
+					"include": "#types"
+				}
+			]
+		},
+		"support": {
+			"patterns": [
+				{
+					"name": "support.include.ecpg",
+					"match": "#.*$"
+				}
+			]
+		}
+	},
+	"scopeName": "source.ecpg"
+}

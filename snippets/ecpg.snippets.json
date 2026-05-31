@@ -1,0 +1,50 @@
+{
+    "sql statements": {
+        "prefix": "EXEC SQL",
+        "body": [
+            "EXEC SQL $1;",
+            "$0"
+        ],
+        "description": "Special statements for database related actions."
+    },
+    "include": {
+        "prefix": "EXEC SQL INCLUDE",
+        "body": [
+            "EXEC SQL INCLUDE $1;",
+            "$0"
+        ],
+        "description": "Include external file."
+    },
+    "connect": {
+        "prefix": "EXEC SQL CONNECT TO",
+        "body": [
+            "EXEC SQL CONNECT TO $1;",
+            "$0"
+        ],
+        "description": "Include external file."
+    },
+    "connect-user": {
+        "prefix": "EXEC SQL CONNECT TO",
+        "body": [
+            "EXEC SQL CONNECT TO $1xxx USER xxx;",
+            "$0"
+        ],
+        "description": "Include external file."
+    },
+    "begin": {
+        "prefix": "EXEC SQL BEGIN DECLARE SECTION;",
+        "body": [
+            "EXEC SQL BEGIN DECLARE SECTION;",
+            "$0"
+        ],
+        "description": "Start declaring host variables."
+    },
+    "end": {
+        "prefix": "EXEC SQL END DECLARE SECTION;",
+        "body": [
+            "EXEC SQL END DECLARE SECTION;",
+            "$0"
+        ],
+        "description": "End declaring host variables."
+    }
+}
