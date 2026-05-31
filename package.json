@@ -1,0 +1,65 @@
+{
+  "name": "embeddesql",
+  "displayName": "EmbeddedSQL",
+  "description": "Extension for Embedded SQL for C language, such as ECPG, Pro*C. Supports basic syntax highlighting and snippets.",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.100.0"
+  },
+  "author": {
+    "name": "Jun Ishikawa",
+    "email": "hamnyan@outlook.com"
+  },
+  "homepage": "https://github.com/hamneko",
+  "publisher": "hamneko",
+  "repository": {
+    "url": "https://github.com/hamneko/vscode-extension-embedded-sql"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "contributes": {
+    "languages": [
+      {
+        "id": "ecpg",
+        "aliases": [
+          "ecpg",
+          "pgc"
+        ],
+        "extensions": [
+          ".pgc"
+        ],
+        "configuration": "./language-configuration.json"
+      },
+      {
+        "id": "proc",
+        "aliases": [
+          "proc",
+          "pro*c"
+        ],
+        "extensions": [
+          ".pc"
+        ],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "ecpg",
+        "scopeName": "source.ecpg",
+        "path": "./syntaxes/ecpg.tmLanguage.json"
+      },
+      {
+        "language": "proc",
+        "scopeName": "source.proc",
+        "path": "./syntaxes/proc.tmLanguage.json"
+      }
+    ],
+    "snippets": [
+      {
+        "language": "ecpg",
+        "path": "./snippets/ecpg.snippets.json"
+      }
+    ]
+  }
+}
