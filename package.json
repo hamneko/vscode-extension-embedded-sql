@@ -2,7 +2,7 @@
   "name": "embeddesql",
   "displayName": "EmbeddedSQL",
   "description": "Extension for Embedded SQL for C language, such as ECPG, Pro*C. Supports basic syntax highlighting and snippets.",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "engines": {
     "vscode": "^1.100.0"
   },
