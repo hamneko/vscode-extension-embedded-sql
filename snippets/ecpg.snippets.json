@@ -26,7 +26,7 @@
     "connect-user": {
         "prefix": "EXEC SQL CONNECT TO",
         "body": [
-            "EXEC SQL CONNECT TO $1xxx USER xxx;",
+            "EXEC SQL CONNECT TO $1xxx AS xxx USER xxx;",
             "$0"
         ],
         "description": "Include external file."
