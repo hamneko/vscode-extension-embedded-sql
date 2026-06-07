@@ -64,7 +64,7 @@
 		},
 		"execsql": {
 			"name": "source.execsql.ecpg",
-			"begin": "EXEC\\sSQL\\s",
+			"begin": "EXEC\\s+SQL\\s+",
 			"beginCaptures": {
 				"0": {
 					"name": "keyword.execsql.ecpg"
@@ -74,11 +74,94 @@
 			"patterns": [
 				{
 					"name": "variable.execsql.ecpg",
-					"match": "(?<=:)\\w+"
+					"match": "(?<=[^:]:)\\w+"
 				},
 				{
 					"name": "variable.execsql.sqlca.ecpg",
-					"match": "sqlca"
+					"match": "(?<=EXEC\\s+SQL\\s+INCLUDE\\s+)sqlca"
+				},
+				{
+					"name": "variable.execsql.cursor.open.ecpg",
+					"match": "(?<=EXEC\\s+SQL\\s+DECLARE\\s+)\\w+"
+				},
+				{
+					"name": "variable.execsql.cursor.ref.ecpg",
+					"match": "(?<=EXEC\\s+SQL\\s+OPEN\\s+)\\w+"
+				},
+				{
+					"name": "variable.execsql.cursor.close.ecpg",
+					"match": "(?<=EXEC\\s+SQL\\s+CLOSE\\s+)\\w+"
+				},
+				{
+					"name": "variable.execsql.connection.set.ecpg",
+					"match": "(?<=EXEC\\s+SQL\\s+SET\\s+CONNECTION\\s+)\\w+"
+				},
+				{
+					"match": "(?<=EXEC\\s+SQL\\s+CONNECT\\s+TO\\s+)(.+?)(\\s+AS\\s+)(.+?)(\\s+USER\\s+)(.+?)(\\s+USING\\s+)(.+?)(?=;)",
+					"captures": {
+						"1": {
+							"name": "string.execsql.connect.database.ecpg"
+						},
+						"3": {
+							"name": "string.execsql.connect.connection.ecpg"
+						},
+						"5": {
+							"name": "string.execsql.connect.user.ecpg"
+						},
+						"7": {
+							"name": "string.execsql.connect.password.ecpg"
+						}
+					}
+				},
+				{
+					"match": "(?<=EXEC\\s+SQL\\s+CONNECT\\s+TO\\s+)(.+?)(\\s+AS\\s+)(.+?)(\\s+USER\\s+)(.+?)(\\s+IDENTIFIED\\s+BY\\s+)(.+?)(?=;)",
+					"captures": {
+						"1": {
+							"name": "string.execsql.connect.database.ecpg"
+						},
+						"3": {
+							"name": "string.execsql.connect.connection.ecpg"
+						},
+						"5": {
+							"name": "string.execsql.connect.user.ecpg"
+						},
+						"7": {
+							"name": "string.execsql.connect.password.ecpg"
+						}
+					}
+				},
+				{
+					"match": "(?<=EXEC\\s+SQL\\s+CONNECT\\s+TO\\s+)(.+?)(\\s+AS\\s+)(.+?)(\\s+USER\\s+)(.+?)(?=;)",
+					"captures": {
+						"1": {
+							"name": "string.execsql.connect.database.ecpg"
+						},
+						"3": {
+							"name": "string.execsql.connect.connection.ecpg"
+						},
+						"5": {
+							"name": "string.execsql.connect.user.ecpg"
+						}
+					}
+				},
+				{
+					"match": "(?<=EXEC\\s+SQL\\s+CONNECT\\s+TO\\s+)(.+?)(\\s+AS\\s+)(.+?)(?=;)",
+					"captures": {
+						"1": {
+							"name": "string.execsql.connect.database.ecpg"
+						},
+						"3": {
+							"name": "string.execsql.connect.connection.ecpg"
+						}
+					}
+				},
+				{
+					"match": "(?<=EXEC\\s+SQL\\s+CONNECT\\s+TO\\s+)(.+?)(?=;)",
+					"captures": {
+						"1": {
+							"name": "string.execsql.connect.database.ecpg"
+						}
+					}
 				},
 				{
 					"include": "#types"
