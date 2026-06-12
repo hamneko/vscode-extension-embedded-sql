@@ -81,12 +81,16 @@
 					"match": "(?<=EXEC\\s+SQL\\s+INCLUDE\\s+)sqlca"
 				},
 				{
-					"name": "variable.execsql.cursor.open.ecpg",
+					"name": "variable.execsql.declare.ecpg",
 					"match": "(?<=EXEC\\s+SQL\\s+DECLARE\\s+)\\w+"
 				},
 				{
-					"name": "variable.execsql.cursor.ref.ecpg",
+					"name": "variable.execsql.cursor.open.ecpg",
 					"match": "(?<=EXEC\\s+SQL\\s+OPEN\\s+)\\w+"
+				},
+				{
+					"name": "variable.execsql.cursor.ref.ecpg",
+					"match": "(?<=EXEC\\s+SQL\\s+FETCH\\s+NEXT\\s+FROM\\s+)\\w+"
 				},
 				{
 					"name": "variable.execsql.cursor.close.ecpg",
@@ -97,7 +101,7 @@
 					"match": "(?<=EXEC\\s+SQL\\s+SET\\s+CONNECTION\\s+)\\w+"
 				},
 				{
-					"match": "(?<=EXEC\\s+SQL\\s+CONNECT\\s+TO\\s+)(.+?)(\\s+AS\\s+)(.+?)(\\s+USER\\s+)(.+?)(\\s+USING\\s+)(.+?)(?=;)",
+					"match": "(?<=EXEC\\s+SQL\\s+CONNECT\\s+TO\\s+)([^:]+?)(\\s+AS\\s+)([^:]+?)(\\s+USER\\s+)([^:]+?)(\\s+USING\\s+)([^:]+?)(?=;)",
 					"captures": {
 						"1": {
 							"name": "string.execsql.connect.database.ecpg"
@@ -114,7 +118,7 @@
 					}
 				},
 				{
-					"match": "(?<=EXEC\\s+SQL\\s+CONNECT\\s+TO\\s+)(.+?)(\\s+AS\\s+)(.+?)(\\s+USER\\s+)(.+?)(\\s+IDENTIFIED\\s+BY\\s+)(.+?)(?=;)",
+					"match": "(?<=EXEC\\s+SQL\\s+CONNECT\\s+TO\\s+)([^:]+?)(\\s+AS\\s+)([^:]+?)(\\s+USER\\s+)([^:]+?)(\\s+IDENTIFIED\\s+BY\\s+)([^:]+?)(?=;)",
 					"captures": {
 						"1": {
 							"name": "string.execsql.connect.database.ecpg"
@@ -131,7 +135,7 @@
 					}
 				},
 				{
-					"match": "(?<=EXEC\\s+SQL\\s+CONNECT\\s+TO\\s+)(.+?)(\\s+AS\\s+)(.+?)(\\s+USER\\s+)(.+?)(?=;)",
+					"match": "(?<=EXEC\\s+SQL\\s+CONNECT\\s+TO\\s+)([^:]+?)(\\s+AS\\s+)([^:]+?)(\\s+USER\\s+)([^:]+?)(?=;)",
 					"captures": {
 						"1": {
 							"name": "string.execsql.connect.database.ecpg"
@@ -145,7 +149,7 @@
 					}
 				},
 				{
-					"match": "(?<=EXEC\\s+SQL\\s+CONNECT\\s+TO\\s+)(.+?)(\\s+AS\\s+)(.+?)(?=;)",
+					"match": "(?<=EXEC\\s+SQL\\s+CONNECT\\s+TO\\s+)([^:]+?)(\\s+AS\\s+)([^:]+?)(?=;)",
 					"captures": {
 						"1": {
 							"name": "string.execsql.connect.database.ecpg"
@@ -156,7 +160,7 @@
 					}
 				},
 				{
-					"match": "(?<=EXEC\\s+SQL\\s+CONNECT\\s+TO\\s+)(.+?)(?=;)",
+					"match": "(?<=EXEC\\s+SQL\\s+CONNECT\\s+TO\\s+)([^:]+?)(?=;)",
 					"captures": {
 						"1": {
 							"name": "string.execsql.connect.database.ecpg"
