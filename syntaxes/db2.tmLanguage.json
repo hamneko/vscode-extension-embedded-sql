@@ -1,0 +1,94 @@
+{
+	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+	"name": "db2",
+	"patterns": [
+		{
+			"include": "#keywords"
+		},
+		{
+			"include": "#types"
+		},
+		{
+			"include": "#comments"
+		},
+		{
+			"include": "#strings"
+		},
+		{
+			"include": "#execsql"
+		},
+		{
+			"include": "#support"
+		}
+	],
+	"repository": {
+		"keywords": {
+			"patterns": [
+				{
+					"name": "keyword.control.db2",
+					"match": "\\b(if|else|for|while|return|switch|case|break|continue)\\b"
+				}
+			]
+		},
+		"types": {
+			"patterns": [
+				{
+					"match": "\\b(int|char|float|double|void|long|short|unsigned|signed|struct|enum)\\b",
+					"name": "storage.type.db2"
+				}
+			]
+		},
+		"comments": {
+			"patterns": [
+				{
+					"begin": "/\\*",
+					"end": "\\*/",
+					"name": "comment.block.db2"
+				},
+				{
+					"match": "//.*$",
+					"name": "comment.line.double-slash.db2"
+				}
+			]
+		},
+		"strings": {
+			"name": "string.quoted.double.db2",
+			"begin": "\"",
+			"end": "\"",
+			"patterns": [
+				{
+					"name": "constant.character.escape.db2",
+					"match": "\\\\."
+				}
+			]
+		},
+		"execsql": {
+			"name": "source.execsql.db2",
+			"begin": "EXEC\\s+SQL\\s+",
+			"beginCaptures": {
+				"0": {
+					"name": "keyword.execsql.db2"
+				}
+			},
+			"end": ";",
+			"patterns": [
+				{
+					"name": "variable.execsql.db2",
+					"match": "(?<=[^:]:)\\w+"
+				},
+				{
+					"include": "#types"
+				}
+			]
+		},
+		"support": {
+			"patterns": [
+				{
+					"name": "support.include.db2",
+					"match": "#.*$"
+				}
+			]
+		}
+	},
+	"scopeName": "source.db2"
+}
