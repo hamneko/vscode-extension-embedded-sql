@@ -41,6 +41,16 @@
           ".pc"
         ],
         "configuration": "./language-configuration.json"
+      },
+      {
+        "id": "db2",
+        "aliases": [
+          "db2"
+        ],
+        "extensions": [
+          ".sqc"
+        ],
+        "configuration": "./language-configuration.json"
       }
     ],
     "grammars": [
@@ -53,6 +63,11 @@
         "language": "proc",
         "scopeName": "source.proc",
         "path": "./syntaxes/proc.tmLanguage.json"
+      },
+      {
+        "language": "db2",
+        "scopeName": "source.db2",
+        "path": "./syntaxes/db2.tmLanguage.json"
       }
     ],
     "snippets": [
